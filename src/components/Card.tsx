@@ -4,10 +4,11 @@ import { siteContext } from '../context/siteContext';
 interface CardProps {
   title: string;
   releaseDate: string;
+  poster: string;
 }
 
-const Card: React.FC<CardProps> = ({ title, releaseDate }) => {
-  const { movies, setMovies } = useContext(siteContext);
+const Card: React.FC<CardProps> = ({ title, releaseDate, poster }) => {
+  const { movies, setMovies, setFocusMovie } = useContext(siteContext);
 
   const removeMovie = (title: string) => {
     console.log(title);
@@ -15,13 +16,26 @@ const Card: React.FC<CardProps> = ({ title, releaseDate }) => {
     setMovies(newMovies);
   };
 
+  const setMovieOnFocus = async (title: string) => {
+    const movieToSet = movies.find((movie) => movie.Title === title);
+
+    if (movieToSet) {
+      setFocusMovie(movieToSet);
+    }
+  };
+
   return (
-    <article>
-      <header>
-        <h2>{title}</h2>
+    <article className="card">
+      <header onClick={() => setMovieOnFocus(title)} className="card__header">
+        <div className="card__image">
+          <img src={poster} alt={title}></img>
+        </div>
+        <h2 className="card__title">{title}</h2>
       </header>
-      <h4>{releaseDate}</h4>
-      <button onClick={() => removeMovie(title)}>Remove</button>
+      <div className="card__text"></div>
+      <button className="card__button" onClick={() => removeMovie(title)}>
+        Remove
+      </button>
     </article>
   );
 };

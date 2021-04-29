@@ -6,8 +6,8 @@ const MovieList: React.FC = () => {
   const { movies } = useContext(siteContext);
 
   return (
-    <div>
-      <h2>Movie List</h2>
+    <div className="movie-list">
+      <h2 className="movie-list__title">Nominations ({movies.length})</h2>
       {movies &&
         movies.map((movie: MovieType) => {
           return (
@@ -15,6 +15,7 @@ const MovieList: React.FC = () => {
               key={movie.imdbID}
               title={movie.Title}
               releaseDate={movie.Released}
+              poster={movie.Poster}
             />
           );
         })}

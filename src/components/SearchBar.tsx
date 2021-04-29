@@ -1,11 +1,11 @@
 import React, { useState, useContext } from 'react';
-import { siteContext, MovieType } from '../context/siteContext';
+import { siteContext } from '../context/siteContext';
 import omdb from '../api/omdb';
 
 const SearchBar: React.FC = () => {
   const [search, setSearchBar] = useState('');
   const [errors, setErrors] = useState('');
-  const { movies, setMovies, setFocusMovie } = useContext(siteContext);
+  const { setFocusMovie } = useContext(siteContext);
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,9 +33,9 @@ const SearchBar: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="searchbar">
       <form onSubmit={(e) => handleFormSubmit(e)}>
-        <label>Search</label>
+        <label>Search Movies</label>
         <input
           value={search}
           onChange={(e) => setSearchBar(e.target.value)}

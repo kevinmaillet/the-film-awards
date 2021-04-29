@@ -28,18 +28,24 @@ const Poster: React.FC<PosterProps> = ({ focusMovie }) => {
   };
 
   return (
-    <article>
-      <header>
-        <h1>Title: {focusMovie.Title}</h1>
-        <h2>Director: {focusMovie.Director}</h2>
-        <h3>Cast: {focusMovie.Actors}</h3>
-        <h4>Written By: {focusMovie.Writer}</h4>
-        <h5>{focusMovie.Year}</h5>
-        <h6>IMDB Rating: {focusMovie.imdbRating}</h6>
-      </header>
-      <button onClick={addToMovieList}>Nominate</button>
-      <p style={{ color: `red` }}>{errors}</p>
-    </article>
+    <>
+      <article className="poster">
+        <div className="poster__image">
+          <img src={focusMovie.Poster} alt={focusMovie.Title} />
+        </div>
+        <div className="poster__text">
+          <h2 className="poster__title">{focusMovie.Title}</h2>
+          <h3>Director: {focusMovie.Director}</h3>
+          <h3 className="poster__cast">Cast: {focusMovie.Actors}</h3>
+          <h4>IMDB Rating: {focusMovie.imdbRating}</h4>
+          <h5>{focusMovie.Year}</h5>
+          <button onClick={addToMovieList} className="poster__button">
+            Nominate
+          </button>
+          <p className="poster__error">{errors}</p>
+        </div>
+      </article>
+    </>
   );
 };
 

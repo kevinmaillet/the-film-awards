@@ -1,0 +1,128 @@
+.searchbar {
+  flex: 100%;
+  & form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  & label {
+    font-weight: 800;
+  }
+
+  & input[type='text'] {
+    height: 2rem;
+    font-size: 1rem;
+    padding-left: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: 5px 2.5px 2.5px rgba(black, 0.1);
+    border-radius: 5px;
+  }
+  margin-bottom: 2rem;
+}
+
+.poster {
+  max-width: 800px;
+  display: flex;
+  margin: 0 auto;
+  flex: 75%;
+  flex-wrap: wrap;
+  height: 50%;
+  justify-content: space-evenly;
+  box-shadow: 10px 5px 5px rgba(black, 0.2);
+  padding: 1rem;
+  text-align: center;
+  background-color: #ffffff;
+  margin-bottom: 1rem;
+  border-top: 1px solid rgba(black, 0.2);
+  border-left: 1px solid rgba(black, 0.2);
+  position: relative;
+
+  &__text {
+    padding: 0 2rem;
+    flex: 50%;
+    // font-size: clamp(1rem, 1.5vw, 1.5rem);
+
+    & > * {
+      padding: 1rem 0;
+    }
+  }
+
+  &__title {
+    letter-spacing: 2px;
+    flex: 100%;
+  }
+
+  &__cast {
+  }
+
+  &__image {
+    & img {
+      object-fit: cover;
+      width: 300px;
+      height: 450px;
+      //   width: 100%;
+      //   height: auto;
+      //   max-width: 720px;
+    }
+  }
+
+  &__button {
+    width: 50%;
+  }
+
+  &__error {
+    color: red;
+    width: 50%;
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+  }
+}
+
+.movie-list {
+  flex: 25%;
+  padding-left: 2rem;
+  height: 50%;
+
+  &__title {
+    font-size: 1.25rem;
+  }
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.5rem;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    transition: 0.2s;
+
+    &:hover {
+      cursor: pointer;
+      color: grey;
+    }
+
+    & > * {
+      padding: 0 0.25rem;
+    }
+  }
+
+  &__title {
+    font-size: 1rem;
+  }
+
+  &__image {
+    // width: 15%;
+    & img {
+      // width: 100%;
+      // height: auto;
+      // object-fit: cover;
+      object-fit: cover;
+      width: 48px;
+      height: 72px;
+    }
+  }
+}
