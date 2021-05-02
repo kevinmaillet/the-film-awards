@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CheckMark = () => {
+const CheckMark: React.FC = () => {
   return (
     <svg
       className="checkmark"

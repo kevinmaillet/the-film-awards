@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { siteContext } from '../context/siteContext';
 import omdb from '../api/omdb';
+import SearchIcon from './SearchIcon';
 
 const SearchBar: React.FC = () => {
   const [search, setSearchBar] = useState('');
@@ -46,8 +47,11 @@ const SearchBar: React.FC = () => {
           onChange={setInput}
           type="text"
         ></input>
+        <div className="searchbar__icon" onClick={handleFormSubmit}>
+          <SearchIcon />
+        </div>
       </form>
-      <p style={{ color: `red` }}>{errors}</p>
+      <p className="searchbar__error">{errors}</p>
     </div>
   );
 };
