@@ -19,7 +19,7 @@ const SearchBar: React.FC = () => {
         },
       })
       .then((res) => res.data)
-      .catch((e) => setErrors(e.message));
+      .catch((e) => setErrors(e));
 
     if (response.Error) {
       setErrors('Movie not Found!');

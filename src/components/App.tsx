@@ -1,20 +1,19 @@
-import React, { useContext } from 'react';
-import { siteContext } from '../context/siteContext';
-import SearchBar from './SearchBar';
-import Poster from './Poster';
-import MovieList from './MovieList';
+import React from 'react';
+import Header from './Header';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import HomePage from './HomePage';
+import NominationsPage from './NominationsPage';
 import '../styles/main.scss';
 
 const App: React.FC = () => {
-  const { movies, focusMovie } = useContext(siteContext);
-  console.log(movies);
-
   return (
-    <main className="main">
-      <SearchBar />
-      {focusMovie && <Poster focusMovie={focusMovie} />}
-      {movies.length !== 0 && <MovieList />}
-    </main>
+    <Router>
+      <Header />
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/nominations" component={NominationsPage} />
+      </Switch>
+    </Router>
   );
 };
 

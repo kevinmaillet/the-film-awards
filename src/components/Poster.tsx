@@ -19,6 +19,7 @@ const Poster: React.FC<PosterProps> = ({ focusMovie }) => {
       !(movies.filter((movie) => movie.Title === focusMovie.Title).length > 0)
     ) {
       setMovies([...movies, focusMovie]);
+      localStorage.setItem('movies', JSON.stringify([...movies, focusMovie]));
     } else {
       setErrors("You've already added this movie!");
       setTimeout(() => {
@@ -37,7 +38,9 @@ const Poster: React.FC<PosterProps> = ({ focusMovie }) => {
           <h2 className="poster__title">{focusMovie.Title}</h2>
           <h3>Director: {focusMovie.Director}</h3>
           <h3 className="poster__cast">Cast: {focusMovie.Actors}</h3>
-          <h4>IMDB Rating: {focusMovie.imdbRating}</h4>
+          <h4 className="poster__rating">
+            IMDB Rating: {focusMovie.imdbRating}
+          </h4>
           <h5>{focusMovie.Year}</h5>
           <button onClick={addToMovieList} className="poster__button">
             Nominate

@@ -1,5 +1,7 @@
 .searchbar {
   flex: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
   & form {
     display: flex;
     flex-direction: column;
@@ -29,13 +31,16 @@
   height: 50%;
   justify-content: space-evenly;
   box-shadow: 10px 5px 5px rgba(black, 0.2);
-  padding: 1rem;
+  padding: 2rem;
   text-align: center;
   background-color: #ffffff;
   margin-bottom: 1rem;
   border-top: 1px solid rgba(black, 0.2);
   border-left: 1px solid rgba(black, 0.2);
   position: relative;
+  border-radius: 10px;
+  animation-name: fadeInAnimation;
+  animation-duration: 0.5s;
 
   &__text {
     padding: 0 2rem;
@@ -53,6 +58,15 @@
   }
 
   &__cast {
+    font-size: 1rem;
+  }
+
+  &__rating {
+    background-color: rgb(231, 231, 231);
+    border-radius: 20px;
+    max-width: 50%;
+    margin: 0 auto;
+    padding: 0;
   }
 
   &__image {
@@ -60,9 +74,7 @@
       object-fit: cover;
       width: 300px;
       height: 450px;
-      //   width: 100%;
-      //   height: auto;
-      //   max-width: 720px;
+      border-radius: 10px;
     }
   }
 
@@ -77,9 +89,25 @@
     bottom: 0;
     right: 50%;
   }
+
+  // @media only screen and (max-width: 600px) {
+  //   & {
+  //   padding: 1rem 0.5rem;
+  //   height: 25%;
+  //   }
+
+  //   &__image {
+  //     & img {
+  //       width: 250px;
+  //       height: 400px;
+  //     }
+  //   }
+  // }
 }
 
 .movie-list {
+  max-width: 1000px;
+  margin: 0 auto;
   flex: 25%;
   padding-left: 2rem;
   height: 50%;
@@ -93,7 +121,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 0.5rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid grey;
+  animation-name: fadeInAnimation;
+  animation-duration: 0.5s;
 
   &__header {
     display: flex;
@@ -112,17 +143,66 @@
 
   &__title {
     font-size: 1rem;
+    padding-right: 2rem;
   }
 
   &__image {
-    // width: 15%;
     & img {
-      // width: 100%;
-      // height: auto;
-      // object-fit: cover;
       object-fit: cover;
       width: 48px;
       height: 72px;
+      border-radius: 2px;
     }
+  }
+
+  &__button {
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+
+    &:active,
+    &:hover {
+      color: white;
+      background-color: black;
+    }
+  }
+}
+
+.cta {
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 2rem;
+
+  &__icon {
+    width: 25%;
+    margin: 0 auto;
+
+    & img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__bigtext {
+    font-size: 5rem;
+    line-height: 1;
+  }
+
+  &__medtext {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+
+  &__smalltext {
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+  }
+
+  &__button {
+    margin-top: 3rem;
+    width: 25%;
+    height: 3rem;
   }
 }

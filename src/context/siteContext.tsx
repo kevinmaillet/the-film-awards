@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 
 interface Ratings {
   Source: string;
@@ -35,6 +35,7 @@ export interface MovieType {
 
 interface DefaultSiteProps {
   navOpen: boolean;
+  setNavOpen: (navOpen: boolean) => void;
   movies: MovieType[] | [];
   setMovies: (movies: MovieType[]) => void;
   focusMovie: MovieType | null;
@@ -43,6 +44,7 @@ interface DefaultSiteProps {
 
 const defaultSite: DefaultSiteProps = {
   navOpen: false,
+  setNavOpen: () => null,
   movies: [],
   setMovies: () => null,
   focusMovie: null,
@@ -53,11 +55,27 @@ export const siteContext = createContext(defaultSite);
 
 export const SiteProvider: React.FC = ({ children }) => {
   const [movies, setMovies] = useState<MovieType[] | []>([]);
-  const [focusMovie, setFocusMovie] = useState<MovieType | null>(null);
+  const [focusMovie, setFocusMovie] = useState<null | MovieType>(null);
+  const [navOpen, setNavOpen] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem('movies') !== null) {
+      const storedMovies = JSON.parse(localStorage.getItem('movies')!);
+      setMovies(storedMovies);
+    }
+  }, []);
 
   return (
     <siteContext.Provider
-      value={{ ...defaultSite, movies, setMovies, focusMovie, setFocusMovie }}
+      value={{
+        ...defaultSite,
+        movies,
+        setMovies,
+        focusMovie,
+        setFocusMovie,
+        navOpen,
+        setNavOpen,
+      }}
     >
       {children}
     </siteContext.Provider>

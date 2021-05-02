@@ -1,4 +1,21 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  box-shadow: 10px 5px 5px rgba(black, 0.2);
+  padding: 0.5rem 2rem;
+
+  &__logo {
+    font-size: 1rem;
+  }
+
+  &__nominations {
+    font-size: 1rem;
+  }
+}
+
 .main {
   display: flex;
   flex-wrap: wrap;
+  padding: 1rem 2rem;
 }
