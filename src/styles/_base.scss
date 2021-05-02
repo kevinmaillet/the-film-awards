@@ -16,14 +16,18 @@ body {
   font-weight: 400;
   line-height: 1.7;
   box-sizing: border-box;
-  background-color: #fffafa;
+  background-image: linear-gradient(
+    to right,
+    var(--main-bg-color),
+    var(--main-white)
+  );
   animation-name: fadeInAnimation;
   animation-duration: 0.5s;
 }
 
 button {
-  background-color: black;
-  color: white;
+  background-color: var(--main-black);
+  color: var(--main-white);
   padding: 0.5rem;
   font-family: inherit;
   letter-spacing: 1px;
@@ -33,12 +37,12 @@ button {
 
 button:hover {
   cursor: pointer;
-  color: black;
-  background-color: white;
+  color: var(--main-black);
+  background-color: var(--main-white);
   transition: 0.2s;
 }
 
 a {
   text-decoration: none;
-  color: black;
+  color: var(--main-black);
 }

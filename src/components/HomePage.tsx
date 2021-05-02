@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import film from '../images/camera.png';
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
   return (
     <main className="main">
       <div className="cta">

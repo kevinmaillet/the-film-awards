@@ -1,5 +1,6 @@
 import React, { useContext, useRef } from 'react';
 import { siteContext } from '../context/siteContext';
+import fallBackImage from '../images/poster-placeholder.jpeg';
 
 interface CardProps {
   title: string;
@@ -36,7 +37,14 @@ const Card: React.FC<CardProps> = ({ title, poster }) => {
     <article ref={cardRef} className="card">
       <header onClick={() => setMovieOnFocus(title)} className="card__header">
         <div className="card__image">
-          <img src={poster} alt={title}></img>
+          <img
+            src={poster}
+            alt={title}
+            onError={(e: any) => {
+              e.target.src = fallBackImage;
+            }}
+            loading="lazy"
+          ></img>
         </div>
         <h2 className="card__title">{title}</h2>
       </header>

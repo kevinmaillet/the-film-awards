@@ -7,6 +7,10 @@ const SearchBar: React.FC = () => {
   const [errors, setErrors] = useState('');
   const { setFocusMovie } = useContext(siteContext);
 
+  const setInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchBar(e.target.value);
+  };
+
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrors('');
@@ -34,11 +38,12 @@ const SearchBar: React.FC = () => {
 
   return (
     <div className="searchbar">
-      <form onSubmit={(e) => handleFormSubmit(e)}>
+      <form onSubmit={handleFormSubmit}>
         <label>Search Movies</label>
         <input
+          id="searchbar-input"
           value={search}
-          onChange={(e) => setSearchBar(e.target.value)}
+          onChange={setInput}
           type="text"
         ></input>
       </form>

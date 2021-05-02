@@ -34,21 +34,25 @@ export interface MovieType {
 }
 
 interface DefaultSiteProps {
-  navOpen: boolean;
-  setNavOpen: (navOpen: boolean) => void;
   movies: MovieType[] | [];
   setMovies: (movies: MovieType[]) => void;
   focusMovie: MovieType | null;
   setFocusMovie: (movie: MovieType) => void;
+  submittedMovies: MovieType[] | [];
+  setSubmittedMovies: (movies: MovieType[]) => void;
+  loading: boolean;
+  setLoading: (loading: boolean) => void;
 }
 
 const defaultSite: DefaultSiteProps = {
-  navOpen: false,
-  setNavOpen: () => null,
   movies: [],
   setMovies: () => null,
   focusMovie: null,
   setFocusMovie: () => null,
+  submittedMovies: [],
+  setSubmittedMovies: () => null,
+  loading: false,
+  setLoading: () => null,
 };
 
 export const siteContext = createContext(defaultSite);
@@ -56,9 +60,17 @@ export const siteContext = createContext(defaultSite);
 export const SiteProvider: React.FC = ({ children }) => {
   const [movies, setMovies] = useState<MovieType[] | []>([]);
   const [focusMovie, setFocusMovie] = useState<null | MovieType>(null);
-  const [navOpen, setNavOpen] = useState(false);
+  const [submittedMovies, setSubmittedMovies] = useState<MovieType[] | []>([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    if (localStorage.getItem('submittedMovies') !== null) {
+      const storedSubmittedMovies = JSON.parse(
+        localStorage.getItem('submittedMovies')!
+      );
+      setSubmittedMovies(storedSubmittedMovies);
+    }
+
     if (localStorage.getItem('movies') !== null) {
       const storedMovies = JSON.parse(localStorage.getItem('movies')!);
       setMovies(storedMovies);
@@ -73,8 +85,10 @@ export const SiteProvider: React.FC = ({ children }) => {
         setMovies,
         focusMovie,
         setFocusMovie,
-        navOpen,
-        setNavOpen,
+        submittedMovies,
+        setSubmittedMovies,
+        loading,
+        setLoading,
       }}
     >
       {children}

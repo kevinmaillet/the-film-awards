@@ -4,7 +4,7 @@ import SearchBar from './SearchBar';
 import Poster from './Poster';
 import MovieList from './MovieList';
 
-const NominationsPage = () => {
+const NominationsPage: React.FC = () => {
   const { movies, focusMovie, setFocusMovie } = useContext(siteContext);
 
   useEffect(() => {

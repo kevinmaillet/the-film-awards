@@ -1,15 +1,21 @@
 import React, { useContext, useState } from 'react';
 import { siteContext, MovieType } from '../context/siteContext';
+import fallBackImage from '../images/poster-placeholder.jpeg';
 
 interface PosterProps {
   focusMovie: MovieType;
 }
 
 const Poster: React.FC<PosterProps> = ({ focusMovie }) => {
-  const { movies, setMovies } = useContext(siteContext);
+  const { movies, setMovies, submittedMovies } = useContext(siteContext);
   const [errors, setErrors] = useState('');
 
   const addToMovieList = () => {
+    if (submittedMovies.length !== 0) {
+      setErrors("You've already submitted your nominations!");
+      return;
+    }
+
     if (movies.length === 5) {
       setErrors("You've added 5 movies already!");
       return;
@@ -32,7 +38,13 @@ const Poster: React.FC<PosterProps> = ({ focusMovie }) => {
     <>
       <article className="poster">
         <div className="poster__image">
-          <img src={focusMovie.Poster} alt={focusMovie.Title} />
+          <img
+            src={focusMovie.Poster}
+            alt={focusMovie.Title}
+            onError={(e: any) => {
+              e.target.src = fallBackImage;
+            }}
+          />
         </div>
         <div className="poster__text">
           <h2 className="poster__title">{focusMovie.Title}</h2>

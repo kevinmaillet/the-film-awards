@@ -33,7 +33,7 @@
   box-shadow: 10px 5px 5px rgba(black, 0.2);
   padding: 2rem;
   text-align: center;
-  background-color: #ffffff;
+  background-color: var(--main-white);
   margin-bottom: 1rem;
   border-top: 1px solid rgba(black, 0.2);
   border-left: 1px solid rgba(black, 0.2);
@@ -111,9 +111,24 @@
   flex: 25%;
   padding-left: 2rem;
   height: 50%;
+  position: relative;
+
+  &--submitted {
+    & button {
+      background-color: rgba(grey, 0.5);
+      color: rgba(grey, 0.5);
+      border: grey;
+      pointer-events: none;
+    }
+  }
 
   &__title {
     font-size: 1.25rem;
+  }
+
+  &__button {
+    display: block;
+    margin: 0 auto;
   }
 }
 
@@ -122,9 +137,12 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem;
-  border-bottom: 1px solid grey;
   animation-name: fadeInAnimation;
   animation-duration: 0.5s;
+
+  &:nth-child(-n + 6) {
+    border-bottom: 1px solid grey;
+  }
 
   &__header {
     display: flex;
@@ -149,21 +167,21 @@
   &__image {
     & img {
       object-fit: cover;
-      width: 48px;
-      height: 72px;
+      width: 40px;
+      height: 64px;
       border-radius: 2px;
     }
   }
 
   &__button {
-    color: black;
-    background-color: white;
-    border: 2px solid black;
+    color: var(--main-black);
+    background-color: var(--main-white);
+    border: 2px solid var(--main-black);
 
     &:active,
     &:hover {
       color: white;
-      background-color: black;
+      background-color: var(--main-black);
     }
   }
 }
@@ -186,11 +204,14 @@
   &__bigtext {
     font-size: 5rem;
     line-height: 1;
+    color: var(--main-purple);
+    text-shadow: 2px 2px 4px rgba(black, 0.5);
   }
 
   &__medtext {
     font-size: 1.5rem;
     line-height: 1.2;
+    font-weight: 600;
   }
 
   &__smalltext {
