@@ -35,8 +35,16 @@ button {
   border-radius: 5px;
 }
 
-button:hover {
-  cursor: pointer;
+@media (hover: hover) and (pointer: fine) {
+  button:hover {
+    cursor: pointer;
+    color: var(--main-black);
+    background-color: var(--main-white);
+    transition: 0.2s;
+  }
+}
+
+button:active {
   color: var(--main-black);
   background-color: var(--main-white);
   transition: 0.2s;
