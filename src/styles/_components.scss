@@ -119,6 +119,7 @@
     bottom: 6%;
     left: 0;
     transform: translate(50%, 50%);
+    z-index: 500;
   }
 
   &__error {
