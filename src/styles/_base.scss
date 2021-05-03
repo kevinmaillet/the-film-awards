@@ -20,7 +20,7 @@ body {
   box-sizing: border-box;
   background-image: linear-gradient(
     to right,
-    var(--main-white),
+    var(--main-bg-color),
     var(--secondary-bg-color)
   );
   animation-name: fadeInAnimation;

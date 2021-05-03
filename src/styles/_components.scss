@@ -16,7 +16,7 @@
   & input[type='text'] {
     height: 2rem;
     font-size: 16px;
-    padding: 1.25rem;
+    padding: 1rem;
     padding-left: 0.5rem;
     font-family: 'Montserrat', sans-serif;
     box-shadow: 5px 2.5px 2.5px rgba(black, 0.1);
@@ -222,20 +222,23 @@
   }
 
   &__title {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   &__secondary-title {
-    height: 3rem;
+    height: 2.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 
   &__button {
     display: block;
     margin: 0 auto;
+    width: 300px;
+    padding: 0.75rem;
+    // margin-top: 20px;
   }
   @media only screen and (max-width: 600px) {
     & {
@@ -244,11 +247,18 @@
     }
 
     &__button {
+      margin-top: 2rem;
       width: 100%;
-      height: 3rem;
+      height: 4rem;
       font-size: 1.25rem;
     }
   }
+
+  // @media only screen and (max-width: 1152px) {
+  //   &__button {
+  //     width: 50%;
+  //   }
+  // }
 }
 
 .card {
@@ -286,8 +296,8 @@
   &__image {
     & img {
       object-fit: cover;
-      width: 40px;
-      height: 64px;
+      width: 36px;
+      height: 60px;
       border-radius: var(--border-radius);
     }
   }
