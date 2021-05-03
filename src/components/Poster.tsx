@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { siteContext, MovieType } from '../context/siteContext';
 import StarIcon from './StarIcon';
 import fallBackImage from '../images/poster-placeholder.jpeg';
@@ -11,6 +11,15 @@ const Poster: React.FC<PosterProps> = ({ focusMovie }) => {
   const { movies, setMovies, submittedMovies } = useContext(siteContext);
   const [message, setMessage] = useState('');
   const [color, setColor] = useState('');
+  let timer: ReturnType<typeof setTimeout> | undefined;
+
+  useEffect(() => {
+    return () => {
+      clearTimeout(timer!);
+      setMessage('');
+      setColor('');
+    };
+  }, [timer]);
 
   const addToMovieList = () => {
     //Define the flow for messages.
@@ -18,7 +27,7 @@ const Poster: React.FC<PosterProps> = ({ focusMovie }) => {
       setMessage(message);
       setColor(color);
 
-      setTimeout(() => {
+      timer = setTimeout(() => {
         setMessage('');
         setColor('');
       }, 2000);
