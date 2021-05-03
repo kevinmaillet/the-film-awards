@@ -1,12 +1,12 @@
 :root {
-  --main-black: #000000;
+  --main-black: #2b2b2b;
   --main-bg-color: #fffafa;
-  --main-white: #ffffff;
+  --secondary-bg-color: #fffff2;
+  --main-white: #f7f7f7;
   --main-purple: #4a00a9;
-  --breakpoint-mobile: 600px;
-  --breakpoint-tablet-portrat: 768px;
-  --breakpoint-tablet-landscape: 992px;
-  --breakpoint-desktop: 1200px;
+  --main-grey: #aaaaaa;
+  --border-radius: 10px;
+
   /* Extra small devices (phones, 600px and down) */
   // @media only screen and (max-width: 600px) {...}
 

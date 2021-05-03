@@ -16,10 +16,11 @@
   & input[type='text'] {
     height: 2rem;
     font-size: 16px;
+    padding: 1.25rem;
     padding-left: 0.5rem;
     font-family: 'Montserrat', sans-serif;
     box-shadow: 5px 2.5px 2.5px rgba(black, 0.1);
-    border-radius: 5px;
+    border-radius: var(--border-radius);
 
     &:focus {
       font-size: 16px;
@@ -67,7 +68,7 @@
   border-top: 1px solid rgba(black, 0.2);
   border-left: 1px solid rgba(black, 0.2);
   position: relative;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   animation-name: fadeInAnimation;
   animation-duration: 0.5s;
 
@@ -109,7 +110,26 @@
       object-fit: cover;
       width: 300px;
       height: 450px;
-      border-radius: 10px;
+      border-radius: var(--border-radius);
+    }
+  }
+
+  &__messages {
+    position: relative;
+  }
+
+  &__message {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 50%;
+    transform: translate(50%);
+    transition: 0.2s;
+    opacity: 0;
+
+    &--active {
+      opacity: 1;
     }
   }
 
@@ -120,15 +140,6 @@
     left: 0;
     transform: translate(50%, 50%);
     z-index: 500;
-  }
-
-  &__error {
-    color: red;
-    width: 50%;
-    position: absolute;
-    bottom: 3%;
-    right: 50%;
-    transform: translate(50%, 50%);
   }
 
   @media only screen and (max-width: 600px) {
@@ -185,10 +196,10 @@
         height: auto;
       }
     }
-    &__error {
-      width: 100%;
-      bottom: 25%;
-    }
+    // &__error {
+    //   width: 100%;
+    //   bottom: 25%;
+    // }
   }
 }
 
@@ -275,7 +286,7 @@
       object-fit: cover;
       width: 40px;
       height: 64px;
-      border-radius: 2px;
+      border-radius: var(--border-radius);
     }
   }
 
@@ -285,7 +296,8 @@
     border: 2px solid var(--main-black);
     font-weight: 800;
 
-    &:active {
+    &:active,
+    &:hover {
       color: white;
       background-color: var(--main-black);
     }
@@ -296,28 +308,25 @@
   margin: 0 auto;
   text-align: center;
   margin-top: 2rem;
-
-  &__icon {
-    width: 25%;
-    margin: 0 auto;
-
-    & img {
-      width: 100%;
-      height: auto;
-    }
-  }
+  padding: 2rem;
 
   &__bigtext {
+    font-family: 'Lobster', cursive;
     font-size: 5rem;
     line-height: 1;
     color: var(--main-purple);
-    text-shadow: 2px 2px 4px rgba(black, 0.5);
+    text-shadow: 2px 2px 4px rgba(rgb(255, 243, 74), 0.5);
   }
 
   &__medtext {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     line-height: 1.2;
     font-weight: 600;
+  }
+
+  &__medtext-secondary {
+    font-size: 1rem;
+    text-transform: lowercase;
   }
 
   &__smalltext {
@@ -329,7 +338,7 @@
 
   &__button {
     margin-top: 3rem;
-    width: 25%;
+    width: 50%;
     height: 3rem;
   }
 

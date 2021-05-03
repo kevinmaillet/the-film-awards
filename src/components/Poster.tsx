@@ -9,29 +9,44 @@ interface PosterProps {
 
 const Poster: React.FC<PosterProps> = ({ focusMovie }) => {
   const { movies, setMovies, submittedMovies } = useContext(siteContext);
-  const [errors, setErrors] = useState('');
+  const [message, setMessage] = useState('');
+  const [color, setColor] = useState('');
 
   const addToMovieList = () => {
+    //Define the flow for messages.
+    const messageFlow = (color: string, message: string) => {
+      setMessage(message);
+      setColor(color);
+
+      setTimeout(() => {
+        setMessage('');
+        setColor('');
+      }, 2000);
+    };
+
+    //Error Message for Submitted Movies.
     if (submittedMovies.length !== 0) {
-      setErrors("You've already submitted your nominations!");
+      messageFlow('red', "You've already submitted your nominations!");
       return;
     }
 
+    //Error Message for Nominations of 5.
     if (movies.length === 5) {
-      setErrors("You've added 5 movies already!");
+      messageFlow('red', "You've added 5 movies already!");
       return;
     }
 
+    //Check if movie was not submitted already.
     if (
       !(movies.filter((movie) => movie.Title === focusMovie.Title).length > 0)
     ) {
+      //Set Success Message added to nominations.
+      messageFlow('green', 'Movie added to Nominations!');
       setMovies([...movies, focusMovie]);
       localStorage.setItem('movies', JSON.stringify([...movies, focusMovie]));
     } else {
-      setErrors("You've already added this movie!");
-      setTimeout(() => {
-        setErrors('');
-      }, 3000);
+      //Set Error message movie already added.
+      messageFlow('red', "You've already added this movie!");
     }
   };
 
@@ -56,10 +71,19 @@ const Poster: React.FC<PosterProps> = ({ focusMovie }) => {
             <h4>IMDB Rating: {focusMovie.imdbRating}</h4>
           </div>
           <h5 className="poster__year">{focusMovie.Year}</h5>
+          <div className="poster__messages">
+            <p
+              style={{ color: color }}
+              className={`poster__message ${
+                message ? 'poster__message--active' : ''
+              }`}
+            >
+              {message}
+            </p>
+          </div>
           <button onClick={addToMovieList} className="poster__button">
             Nominate
           </button>
-          <p className="poster__error">{errors}</p>
         </div>
       </article>
     </>
