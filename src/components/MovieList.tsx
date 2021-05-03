@@ -44,7 +44,7 @@ const MovieList: React.FC = () => {
         Nominations (
         {submittedMovies.length !== 0 ? 'Submitted' : movies.length})
       </h2>
-      <div style={{ display: `flex`, justifyContent: `space-between` }}>
+      <div className="movie-list__secondary-title">
         {submittedDate && `Submitted ${moment(submittedDate).fromNow()}`}
         {loading && <CheckMark />}
       </div>

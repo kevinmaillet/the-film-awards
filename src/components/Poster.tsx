@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { siteContext, MovieType } from '../context/siteContext';
+import StarIcon from './StarIcon';
 import fallBackImage from '../images/poster-placeholder.jpeg';
 
 interface PosterProps {
@@ -48,12 +49,13 @@ const Poster: React.FC<PosterProps> = ({ focusMovie }) => {
         </div>
         <div className="poster__text">
           <h2 className="poster__title">{focusMovie.Title}</h2>
-          <h3>Director: {focusMovie.Director}</h3>
+          <h3 className="poster__director">Director: {focusMovie.Director}</h3>
           <h3 className="poster__cast">Cast: {focusMovie.Actors}</h3>
-          <h4 className="poster__rating">
-            IMDB Rating: {focusMovie.imdbRating}
-          </h4>
-          <h5>{focusMovie.Year}</h5>
+          <div className="poster__rating">
+            <StarIcon />
+            <h4>IMDB Rating: {focusMovie.imdbRating}</h4>
+          </div>
+          <h5 className="poster__year">{focusMovie.Year}</h5>
           <button onClick={addToMovieList} className="poster__button">
             Nominate
           </button>
