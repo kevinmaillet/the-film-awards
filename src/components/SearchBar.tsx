@@ -48,11 +48,13 @@ const SearchBar: React.FC = () => {
           onChange={setInput}
           type="text"
         ></input>
-        <div className="searchbar__icon" onClick={handleFormSubmit}>
+        <span className="searchbar__icon" onClick={handleFormSubmit}>
           <SearchIcon />
+        </span>
+        <div className="searchbar__error">
+          <p>{errors}</p>
         </div>
       </form>
-      <p className="searchbar__error">{errors}</p>
     </div>
   );
 };

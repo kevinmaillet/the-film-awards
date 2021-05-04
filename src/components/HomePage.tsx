@@ -7,7 +7,7 @@ const HomePage: React.FC = () => {
   return (
     <>
       <Helmet title="The Shoppies" />
-      <main className="main">
+      <main className="main main--homepage">
         <div className="cta">
           <div className="cta__logo">
             <img src={camera} alt="camera-icon" />

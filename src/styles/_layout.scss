@@ -11,18 +11,13 @@
   z-index: 5000;
 
   &__logo {
-    font-family: 'Lobster', cursive;
     font-size: 1.25rem;
+    letter-spacing: 2px;
+    font-weight: 400;
   }
 
   &__nominations {
     font-size: 0.75rem;
-  }
-
-  @media only screen and (max-width: 600px) {
-    &__logo {
-      font-size: 1.5rem;
-    }
   }
 }
 

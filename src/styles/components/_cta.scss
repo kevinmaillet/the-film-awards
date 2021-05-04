@@ -34,7 +34,6 @@
   &__medtext {
     margin-top: 1rem;
     font-size: 1.25rem;
-    line-height: 1.2;
     font-weight: 600;
   }
 
@@ -59,10 +58,11 @@
   @media only screen and (max-width: 600px) {
     & {
       margin-top: 5rem;
+      height: 55%;
     }
 
     &__bigtext {
-      font-size: 3rem;
+      font-size: 2.5rem;
     }
 
     &__medtext {
