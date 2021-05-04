@@ -1,9 +1,5 @@
 .header {
-  background-image: linear-gradient(
-    to right,
-    var(--main-bg-color),
-    var(--secondary-bg-color)
-  );
+  background-color: var(--main-white);
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -21,6 +17,12 @@
 
   &__nominations {
     font-size: 0.75rem;
+  }
+
+  @media only screen and (max-width: 600px) {
+    &__logo {
+      font-size: 1.5rem;
+    }
   }
 }
 

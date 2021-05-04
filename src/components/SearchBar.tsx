@@ -26,6 +26,7 @@ const SearchBar: React.FC = () => {
       .then((res) => res.data)
       .catch((e) => setErrors(e));
 
+    //API returns error for unfound movies
     if (response.Error) {
       setErrors('Movie not Found!');
       setSearchBar('');

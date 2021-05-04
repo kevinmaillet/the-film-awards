@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
 
 *,
 *::after,
@@ -20,8 +21,8 @@ body {
   box-sizing: border-box;
   background-image: linear-gradient(
     to right,
-    var(--main-bg-color),
-    var(--secondary-bg-color)
+    var(--secondary-bg-color),
+    var(--main-bg-color)
   );
   animation-name: fadeInAnimation;
   animation-duration: 0.5s;

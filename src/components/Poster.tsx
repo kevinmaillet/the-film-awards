@@ -13,6 +13,7 @@ const Poster: React.FC<PosterProps> = ({ focusMovie }) => {
   const [color, setColor] = useState('');
   let timer: ReturnType<typeof setTimeout> | undefined;
 
+  //Remove setTimeout on unmount
   useEffect(() => {
     return () => {
       clearTimeout(timer!);

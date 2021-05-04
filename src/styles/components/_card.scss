@@ -1,0 +1,54 @@
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  animation-name: fadeInAnimation;
+  animation-duration: 0.5s;
+
+  &:nth-child(-n + 6) {
+    border-bottom: 1px solid grey;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    transition: 0.2s;
+
+    &:hover {
+      cursor: pointer;
+      color: grey;
+    }
+
+    & > * {
+      padding: 0 0.25rem;
+    }
+  }
+
+  &__title {
+    font-size: 1rem;
+    padding-right: 2rem;
+  }
+
+  &__image {
+    & img {
+      object-fit: cover;
+      width: 36px;
+      height: 60px;
+      border-radius: 5px;
+    }
+  }
+
+  &__button {
+    color: var(--main-black);
+    background-color: var(--main-white);
+    border: 2px solid var(--main-black);
+    font-weight: 800;
+
+    &:active,
+    &:hover {
+      color: white;
+      background-color: var(--main-black);
+    }
+  }
+}

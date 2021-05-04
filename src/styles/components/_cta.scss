@@ -1,0 +1,81 @@
+.cta {
+  margin: 0 auto;
+  margin-top: 4rem;
+  text-align: center;
+  padding: 1rem;
+  color: var(--main-black);
+  text-shadow: 2px 2px 4px rgba(black, 0.1);
+
+  &__logo {
+    width: 25%;
+    margin: 0 auto;
+    & img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__bigtext {
+    font-family: 'Monoton', cursive;
+    font-size: 4rem;
+    line-height: 1;
+    background-image: linear-gradient(
+      to right,
+      var(--logo-color-1),
+      var(--logo-color-2),
+      var(--logo-color-3)
+    );
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: rgba(black, 0.2);
+  }
+
+  &__medtext {
+    margin-top: 1rem;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+
+  &__medtext-secondary {
+    font-size: 1rem;
+    text-transform: lowercase;
+  }
+
+  &__smalltext {
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+  }
+
+  &__button {
+    margin-top: 3rem;
+    width: 50%;
+    height: 3rem;
+  }
+
+  @media only screen and (max-width: 600px) {
+    & {
+      margin-top: 5rem;
+    }
+
+    &__bigtext {
+      font-size: 3rem;
+    }
+
+    &__medtext {
+      font-size: 1.25rem;
+    }
+
+    &__smalltext {
+      font-size: 1.25rem;
+      max-width: 350px;
+    }
+
+    &__button {
+      width: 50%;
+    }
+  }
+}

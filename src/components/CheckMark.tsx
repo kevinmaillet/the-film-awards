@@ -1,5 +1,6 @@
 import React from 'react';
 
+//Check Mark Animation
 const CheckMark: React.FC = () => {
   return (
     <svg

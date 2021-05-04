@@ -15,6 +15,7 @@ const MovieList: React.FC = () => {
   const [submittedDate, setSubmittedDate] = useState('');
 
   useEffect(() => {
+    //Set time of submitted nominations
     if (localStorage.getItem('submittedMovieDate') !== null) {
       setSubmittedDate(JSON.parse(localStorage.getItem('submittedMovieDate')!));
     }
@@ -30,6 +31,7 @@ const MovieList: React.FC = () => {
 
     const date = new Date();
     setSubmittedMovies(movies);
+    //Set Submitted nominations and submitted time in Local Storage
     localStorage.setItem('submittedMovies', JSON.stringify(movies));
     localStorage.setItem('submittedMovieDate', JSON.stringify(date));
   };

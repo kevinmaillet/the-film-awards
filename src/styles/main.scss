@@ -1,5 +1,9 @@
-@import './abstracts';
+@import './variables';
 @import './base';
 @import './layout';
-@import './components';
+@import './components/searchbar';
+@import './components/poster';
+@import './components/movie-list';
+@import './components/card';
+@import './components/cta';
 @import './animations';

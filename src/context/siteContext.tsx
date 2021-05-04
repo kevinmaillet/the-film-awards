@@ -63,6 +63,7 @@ export const SiteProvider: React.FC = ({ children }) => {
   const [submittedMovies, setSubmittedMovies] = useState<MovieType[] | []>([]);
   const [loading, setLoading] = useState(false);
 
+  //Set Submitted movies or picked nominations in state if present in local storage
   useEffect(() => {
     if (localStorage.getItem('submittedMovies') !== null) {
       const storedSubmittedMovies = JSON.parse(

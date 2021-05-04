@@ -1,3 +1,4 @@
+//E2E Suite for functionality of app
 describe('renders home page', () => {
   it('renders correctly', () => {
     cy.visit('/');

@@ -1,0 +1,145 @@
+.poster {
+  max-width: 800px;
+  display: flex;
+  margin: 0 auto;
+  flex: 75%;
+  flex-wrap: wrap;
+  height: 50%;
+  justify-content: space-evenly;
+  box-shadow: 10px 5px 5px rgba(black, 0.2);
+  padding: 2rem;
+  text-align: center;
+  background-color: var(--main-white);
+  margin-bottom: 1rem;
+  border-top: 1px solid rgba(black, 0.2);
+  border-left: 1px solid rgba(black, 0.2);
+  position: relative;
+  border-radius: var(--border-radius);
+  animation-name: fadeInAnimation;
+  animation-duration: 0.5s;
+
+  &__text {
+    padding: 0 2rem;
+    flex: 50%;
+    position: relative;
+
+    & > * {
+      padding: 1rem 0;
+    }
+  }
+
+  &__title {
+    letter-spacing: 2px;
+    flex: 100%;
+  }
+
+  &__cast {
+    font-size: 1rem;
+  }
+
+  &__rating {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(231, 231, 231);
+    font-size: 0.75rem;
+    border-radius: 20px;
+    max-width: 45%;
+    min-width: 150px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  &__image {
+    & img {
+      object-fit: cover;
+      width: 300px;
+      height: 450px;
+      border-radius: var(--border-radius);
+    }
+  }
+
+  &__messages {
+    position: relative;
+  }
+
+  &__message {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 50%;
+    transform: translate(50%);
+    transition: 0.2s;
+    opacity: 0;
+
+    &--active {
+      opacity: 1;
+    }
+  }
+
+  &__button {
+    width: 50%;
+    position: absolute;
+    bottom: 6%;
+    left: 0;
+    transform: translate(50%, 50%);
+    z-index: 500;
+  }
+
+  @media only screen and (max-width: 600px) {
+    & {
+      padding: 1rem;
+      flex-direction: column;
+      box-shadow: 2px 2px 2px rgba(black, 0.2);
+      flex-wrap: nowrap;
+    }
+
+    &__text {
+      flex: 100%;
+      padding: 0.25rem 0;
+
+      & > * {
+        padding: 0;
+      }
+    }
+
+    &__title {
+      font-size: 1.35rem;
+    }
+
+    &__director {
+      font-size: 1rem;
+    }
+
+    &__cast {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    &__rating {
+      margin-top: 0.75rem;
+      padding: 0.25rem;
+    }
+
+    &__year {
+      margin-top: 0.5rem;
+    }
+
+    &__button {
+      position: relative;
+      width: 100%;
+      height: 3.5rem;
+      margin-top: 2rem;
+      transform: none;
+      font-size: 1.25rem;
+    }
+
+    &__image {
+      flex: 100%;
+      & img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}

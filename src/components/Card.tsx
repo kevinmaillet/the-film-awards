@@ -24,7 +24,7 @@ const Card: React.FC<CardProps> = ({ title, poster }) => {
       localStorage.setItem('movies', JSON.stringify(newMovies));
     }, 500);
   };
-
+  //Display Poster Movie
   const setMovieOnFocus = async (title: string) => {
     const movieToSet = movies.find((movie) => movie.Title === title);
 
