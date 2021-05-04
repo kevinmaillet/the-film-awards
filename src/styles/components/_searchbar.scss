@@ -31,25 +31,24 @@
 
   &__icon {
     align-self: flex-end;
-    margin-top: -1.5rem;
+    margin-top: -2rem;
     margin-right: 0.5rem;
+    cursor: pointer;
+
+    & svg {
+      transform: translateY(8px);
+    }
   }
 
   &__error {
     width: 100%;
     height: 2rem;
-    color: red;
-    padding-top: 2px;
+    color: var(--error-red);
+    padding-top: 6px;
   }
   @media only screen and (max-width: 600px) {
     & {
       padding: 0 1rem;
-    }
-
-    &__icon {
-      right: 5%;
-      top: 37%;
-      height: 1.5rem;
     }
   }
 }

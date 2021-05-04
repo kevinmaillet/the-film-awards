@@ -7,7 +7,7 @@
   animation-duration: 0.5s;
 
   &:nth-child(-n + 6) {
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid var(--main-grey);
   }
 
   &__header {
@@ -17,7 +17,7 @@
 
     &:hover {
       cursor: pointer;
-      color: grey;
+      color: var(--main-grey);
     }
 
     & > * {
@@ -47,7 +47,7 @@
 
     &:active,
     &:hover {
-      color: white;
+      color: var(--main-white);
       background-color: var(--main-black);
     }
   }

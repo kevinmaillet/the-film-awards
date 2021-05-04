@@ -10,7 +10,7 @@
     & button {
       background-color: rgba(grey, 0.5);
       color: rgba(grey, 0.5);
-      border: grey;
+      border: var(--main-grey);
       pointer-events: none;
     }
   }

@@ -40,7 +40,7 @@
   &__rating {
     display: flex;
     justify-content: space-evenly;
-    background-color: rgb(231, 231, 231);
+    background-color: var(--secondary-grey);
     font-size: 0.75rem;
     border-radius: 20px;
     max-width: 45%;
