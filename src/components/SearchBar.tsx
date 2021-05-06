@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import { siteContext, otherOption } from '../context/siteContext';
 import omdb from '../api/omdb';
 import SearchIcon from './SearchIcon';
@@ -11,6 +11,7 @@ const SearchBar: React.FC = () => {
   const { setFocusMovie, otherOptions, setOtherOptions } = useContext(
     siteContext
   );
+  const dropDownRef = useRef<HTMLDivElement>(null);
 
   //Set Timer for Debouncing Api Calls
   useEffect(() => {
@@ -51,6 +52,16 @@ const SearchBar: React.FC = () => {
     // eslint-disable-next-line
   }, [debouncedText]);
 
+  //Set up event listeners to remove dropdown if clicked outside
+  useEffect(() => {
+    document.addEventListener('click', handleClick);
+
+    return () => {
+      document.removeEventListener('click', handleClick);
+    };
+    //eslint-disable-next-line
+  }, []);
+
   const setInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setOtherOptions([]);
     setSearchBar(e.target.value);
@@ -83,6 +94,15 @@ const SearchBar: React.FC = () => {
     setOtherOptions([]);
   };
 
+  //Remove dropdown if clicked outside of element
+  const handleClick = (e: Event) => {
+    if (dropDownRef && dropDownRef.current) {
+      if (!dropDownRef.current.contains(e.target as Node)) {
+        setOtherOptions([]);
+      }
+    }
+  };
+
   return (
     <div className="searchbar">
       <form onSubmit={handleFormSubmit} autoComplete="off">
@@ -94,9 +114,10 @@ const SearchBar: React.FC = () => {
           type="text"
         ></input>
         {otherOptions && otherOptions.length !== 0 && (
-          <div className="searchbar__dropdown">
+          <div ref={dropDownRef} className="searchbar__dropdown">
             {otherOptions.map((option: otherOption) => (
               <Card
+                key={option.imdbID}
                 title={option.Title}
                 poster={option.Poster}
                 button={false}

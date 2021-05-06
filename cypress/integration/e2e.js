@@ -11,6 +11,8 @@ describe('renders home page', () => {
     cy.get('.feather-search').click();
     cy.get('.poster__title').should('have.text', 'Batman');
     cy.get('.poster__button').click();
+    //Click main element to ensure dropdown is not blocking Poster
+    cy.get('.main').click();
     cy.get('.card').should('be.visible');
     cy.get('.card__button').click();
     cy.get('.card').should('not.exist');
