@@ -63,6 +63,7 @@
     vertical-align: bottom;
     height: 550px;
     z-index: 1000;
+    overflow: scroll;
   }
   @media only screen and (max-width: 600px) {
     & {

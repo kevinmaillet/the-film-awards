@@ -6,12 +6,15 @@ import Poster from './Poster';
 import MovieList from './MovieList';
 
 const NominationsPage: React.FC = () => {
-  const { movies, focusMovie, setFocusMovie } = useContext(siteContext);
+  const { movies, focusMovie, setFocusMovie, setOtherOptions } = useContext(
+    siteContext
+  );
 
-  //If Nom page is left, remove Poster
+  //If Nom page is left, remove Poster and other options
   useEffect(() => {
     return () => {
       setFocusMovie(null!);
+      setOtherOptions([]);
     };
   }, [setFocusMovie]);
 

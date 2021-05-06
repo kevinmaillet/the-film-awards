@@ -50,17 +50,19 @@ const MovieList: React.FC = () => {
         {submittedDate && `Submitted ${moment(submittedDate).fromNow()}`}
         {loading && <CheckMark />}
       </div>
-      {movies &&
-        movies.map((movie: MovieType) => {
-          return (
-            <Card
-              key={movie.imdbID}
-              title={movie.Title}
-              poster={movie.Poster}
-              button={true}
-            />
-          );
-        })}
+      <div className="movie-list__cards">
+        {movies &&
+          movies.map((movie: MovieType) => {
+            return (
+              <Card
+                key={movie.imdbID}
+                title={movie.Title}
+                poster={movie.Poster}
+                button={true}
+              />
+            );
+          })}
+      </div>
       {movies.length === 5 && (
         <form onSubmit={(e) => submitMovies(e)}>
           <button className="movie-list__button">Submit Nominations</button>
