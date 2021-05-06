@@ -18,7 +18,7 @@ const SearchBar: React.FC = () => {
       if (search) {
         setDebouncedText(search);
       }
-    }, 2000);
+    }, 1000);
 
     return () => {
       clearTimeout(timer);

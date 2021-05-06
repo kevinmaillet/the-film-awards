@@ -33,7 +33,7 @@ const Card: React.FC<CardProps> = ({ title, poster, button }) => {
   };
   //Display Poster Movie
   const setMovieOnFocus = async (title: string) => {
-    //If movie is other options call api to get detailed movie info
+    //If movie is in otherOptions state then call api to get detailed movie info
     if (otherOptions.some((movie) => movie.Title === title)) {
       const response = await omdb
         .get('/', {
@@ -48,7 +48,7 @@ const Card: React.FC<CardProps> = ({ title, poster, button }) => {
       setFocusMovie(response);
       setOtherOptions([]);
     }
-
+    //If movie title is in movies state array then set it.
     if (movies.some((movie) => movie.Title === title)) {
       const movieToSet = movies.find((movie) => movie.Title === title);
       if (movieToSet) {
