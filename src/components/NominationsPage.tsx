@@ -16,7 +16,7 @@ const NominationsPage: React.FC = () => {
       setFocusMovie(null!);
       setOtherOptions([]);
     };
-  }, [setFocusMovie]);
+  }, [setFocusMovie, setOtherOptions]);
 
   return (
     <>

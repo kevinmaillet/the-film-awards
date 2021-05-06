@@ -42,7 +42,6 @@ const SearchBar: React.FC = () => {
       }
 
       if (otherOptionsResponse.Search !== 0) {
-        // setOtherOptions(otherOptionsResponse.Search.splice(0, 6));
         setOtherOptions(otherOptionsResponse.Search);
       }
     };
