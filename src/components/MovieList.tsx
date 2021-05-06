@@ -56,8 +56,8 @@ const MovieList: React.FC = () => {
             <Card
               key={movie.imdbID}
               title={movie.Title}
-              releaseDate={movie.Released}
               poster={movie.Poster}
+              button={true}
             />
           );
         })}

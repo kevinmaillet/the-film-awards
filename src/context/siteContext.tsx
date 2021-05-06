@@ -33,6 +33,14 @@ export interface MovieType {
   imdbVotes: string;
 }
 
+export interface otherOption {
+  Poster: string;
+  Title: string;
+  Type: string;
+  Year: string;
+  imdbID: string;
+}
+
 interface DefaultSiteProps {
   movies: MovieType[] | [];
   setMovies: (movies: MovieType[]) => void;
@@ -42,6 +50,8 @@ interface DefaultSiteProps {
   setSubmittedMovies: (movies: MovieType[]) => void;
   loading: boolean;
   setLoading: (loading: boolean) => void;
+  otherOptions: otherOption[] | [];
+  setOtherOptions: (movie: otherOption[]) => void;
 }
 
 const defaultSite: DefaultSiteProps = {
@@ -53,6 +63,8 @@ const defaultSite: DefaultSiteProps = {
   setSubmittedMovies: () => null,
   loading: false,
   setLoading: () => null,
+  otherOptions: [],
+  setOtherOptions: () => null,
 };
 
 export const siteContext = createContext(defaultSite);
@@ -62,6 +74,7 @@ export const SiteProvider: React.FC = ({ children }) => {
   const [focusMovie, setFocusMovie] = useState<null | MovieType>(null);
   const [submittedMovies, setSubmittedMovies] = useState<MovieType[] | []>([]);
   const [loading, setLoading] = useState(false);
+  const [otherOptions, setOtherOptions] = useState<otherOption[] | []>([]);
 
   //Set Submitted movies or picked nominations in state if present in local storage
   useEffect(() => {
@@ -90,6 +103,8 @@ export const SiteProvider: React.FC = ({ children }) => {
         setSubmittedMovies,
         loading,
         setLoading,
+        otherOptions,
+        setOtherOptions,
       }}
     >
       {children}

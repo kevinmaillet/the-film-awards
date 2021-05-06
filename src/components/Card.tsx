@@ -1,15 +1,22 @@
 import React, { useContext, useRef } from 'react';
 import { siteContext } from '../context/siteContext';
+import omdb from '../api/omdb';
 import fallBackImage from '../images/poster-placeholder.jpeg';
 
 interface CardProps {
   title: string;
-  releaseDate: string;
   poster: string;
+  button: boolean;
 }
 
-const Card: React.FC<CardProps> = ({ title, poster }) => {
-  const { movies, setMovies, setFocusMovie } = useContext(siteContext);
+const Card: React.FC<CardProps> = ({ title, poster, button }) => {
+  const {
+    movies,
+    setMovies,
+    setFocusMovie,
+    otherOptions,
+    setOtherOptions,
+  } = useContext(siteContext);
   const cardRef = useRef<HTMLDivElement>(null);
 
   const removeMovie = (title: string) => {
@@ -26,10 +33,27 @@ const Card: React.FC<CardProps> = ({ title, poster }) => {
   };
   //Display Poster Movie
   const setMovieOnFocus = async (title: string) => {
-    const movieToSet = movies.find((movie) => movie.Title === title);
+    //If movie is other options call api to get detailed movie info
+    if (otherOptions.some((movie) => movie.Title === title)) {
+      const response = await omdb
+        .get('/', {
+          params: {
+            t: title,
+            type: 'movie',
+          },
+        })
+        .then((res) => res.data)
+        .catch((e) => {});
 
-    if (movieToSet) {
-      setFocusMovie(movieToSet);
+      setFocusMovie(response);
+      setOtherOptions([]);
+    }
+
+    if (movies.some((movie) => movie.Title === title)) {
+      const movieToSet = movies.find((movie) => movie.Title === title);
+      if (movieToSet) {
+        setFocusMovie(movieToSet);
+      }
     }
   };
 
@@ -49,9 +73,11 @@ const Card: React.FC<CardProps> = ({ title, poster }) => {
         <h2 className="card__title">{title}</h2>
       </header>
       <div className="card__text"></div>
-      <button className="card__button" onClick={(e) => removeMovie(title)}>
-        Remove
-      </button>
+      {button && (
+        <button className="card__button" onClick={(e) => removeMovie(title)}>
+          Remove
+        </button>
+      )}
     </article>
   );
 };

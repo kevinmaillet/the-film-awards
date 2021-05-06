@@ -1,14 +1,58 @@
-import React, { useState, useContext } from 'react';
-import { siteContext } from '../context/siteContext';
+import React, { useState, useContext, useEffect } from 'react';
+import { siteContext, otherOption } from '../context/siteContext';
 import omdb from '../api/omdb';
 import SearchIcon from './SearchIcon';
+import Card from './Card';
 
 const SearchBar: React.FC = () => {
   const [search, setSearchBar] = useState('');
   const [errors, setErrors] = useState('');
-  const { setFocusMovie } = useContext(siteContext);
+  const [debouncedText, setDebouncedText] = useState('');
+  const { setFocusMovie, otherOptions, setOtherOptions } = useContext(
+    siteContext
+  );
+
+  //Set Timer for Debouncing Api Calls
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (search) {
+        setDebouncedText(search);
+      }
+    }, 2000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [search]);
+
+  //Set drop down options for on changed search terms
+  useEffect(() => {
+    const getOtherOptions = async () => {
+      const otherOptionsResponse = await omdb
+        .get('/', {
+          params: {
+            s: search,
+            type: 'movie',
+          },
+        })
+        .then((res) => res.data)
+        .catch((e) => {});
+      if (otherOptionsResponse.Error) {
+        return;
+      }
+
+      if (otherOptionsResponse.Search !== 0) {
+        setOtherOptions(otherOptionsResponse.Search.splice(0, 6));
+      }
+    };
+    if (debouncedText) {
+      getOtherOptions();
+    }
+    // eslint-disable-next-line
+  }, [debouncedText]);
 
   const setInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setOtherOptions([]);
     setSearchBar(e.target.value);
   };
 
@@ -16,7 +60,7 @@ const SearchBar: React.FC = () => {
     e.preventDefault();
     setErrors('');
 
-    const response = await omdb
+    const posterResponse = await omdb
       .get('/', {
         params: {
           t: search,
@@ -27,20 +71,21 @@ const SearchBar: React.FC = () => {
       .catch((e) => setErrors(e));
 
     //API returns error for unfound movies
-    if (response.Error) {
+    if (posterResponse.Error) {
       setErrors('Movie not Found!');
       setSearchBar('');
       return;
     }
 
-    setFocusMovie(response);
+    setFocusMovie(posterResponse);
 
     setSearchBar('');
+    setOtherOptions([]);
   };
 
   return (
     <div className="searchbar">
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleFormSubmit} autoComplete="off">
         <label>Search Movies</label>
         <input
           id="searchbar-input"
@@ -48,6 +93,17 @@ const SearchBar: React.FC = () => {
           onChange={setInput}
           type="text"
         ></input>
+        {otherOptions && otherOptions.length !== 0 && (
+          <div className="searchbar__dropdown">
+            {otherOptions.map((option: otherOption) => (
+              <Card
+                title={option.Title}
+                poster={option.Poster}
+                button={false}
+              />
+            ))}
+          </div>
+        )}
         <span className="searchbar__icon" onClick={handleFormSubmit}>
           <SearchIcon />
         </span>

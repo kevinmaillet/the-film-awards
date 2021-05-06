@@ -46,6 +46,24 @@
     color: var(--error-red);
     padding-top: 6px;
   }
+
+  &__dropdown {
+    position: absolute;
+    border-radius: var(--border-radius);
+    bottom: 0;
+    background-color: white;
+    border-left: 1px solid var(--main-grey);
+    box-shadow: 10px 5px 5px rgba(black, 0.2);
+    margin-top: -1.5rem;
+    left: 50%;
+    top: 100%;
+    width: 100%;
+    max-width: 1000px;
+    transform: translateX(-50%);
+    vertical-align: bottom;
+    height: 550px;
+    z-index: 1000;
+  }
   @media only screen and (max-width: 600px) {
     & {
       padding: 0 1rem;
@@ -54,6 +72,10 @@
         svg {
           transform: translateY(10px);
         }
+      }
+
+      &__dropdown {
+        width: calc(100% - 2rem);
       }
     }
   }
