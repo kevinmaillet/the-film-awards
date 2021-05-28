@@ -8,7 +8,7 @@ const Header: React.FC = () => {
   return (
     <header className="header">
       <Link to="/">
-        <h1 className="header__logo">The Shoppies</h1>
+        <h1 className="header__logo">The Film Awards</h1>
       </Link>
       <Link to="/nominations">
         <h2 className="header__nominations">

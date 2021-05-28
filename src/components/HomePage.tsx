@@ -6,7 +6,7 @@ import camera from '../images/camera.png';
 const HomePage: React.FC = () => {
   return (
     <>
-      <Helmet title="The Shoppies" />
+      <Helmet title="The Film Awards" />
       <main className="main main--homepage">
         <div className="cta">
           <div className="cta__logo">
