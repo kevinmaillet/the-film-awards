@@ -17,7 +17,7 @@
 
   &__bigtext {
     font-family: 'Monoton', cursive;
-    font-size: 4rem;
+    font-size: 3.5rem;
     line-height: 1;
     background-image: linear-gradient(
       to right,
@@ -29,6 +29,7 @@
     -webkit-background-clip: text;
     background-clip: text;
     text-shadow: rgba(black, 0.2);
+    margin-top: 1rem;
   }
 
   &__medtext {

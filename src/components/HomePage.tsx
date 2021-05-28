@@ -13,10 +13,10 @@ const HomePage: React.FC = () => {
             <img src={camera} alt="camera-icon" />
           </div>
           <h4 className="cta__medtext">Presenting</h4>
-          <h4 className="cta__medtext-secondary">The</h4>
-          <h2 className="cta__bigtext">2021&nbsp;&nbsp;Shoppies</h2>
+          <h4 className="cta__medtext-secondary">The 2021</h4>
+          <h2 className="cta__bigtext">Film &nbsp;&nbsp;Awards</h2>
           <p className="cta__smalltext">
-            Nominate your 5 favorite films for the 2021 Shoppies.
+            Nominate your 5 favorite films for the 2021 Film Awards.
           </p>
           <Link to="/nominations">
             <button className="cta__button">Get Started!</button>
